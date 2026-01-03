@@ -12,7 +12,7 @@ pipeline{
 
         stage('Build Image'){
             steps{
-                sh "docker build -t=ufanarda/selenium"
+                sh "docker build -t=ufanarda/selenium:latest ."
             }
         }
 
