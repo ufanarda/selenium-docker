@@ -12,7 +12,7 @@ pipeline{
 
         stage('Build Image'){
             steps{
-                sh "docker build -t=ufanarda/selenium ."
+                sh "docker build -t=ufanarda/selenium"
             }
         }
 
@@ -22,7 +22,7 @@ pipeline{
             }
             steps{
                 sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
-                sh "docker push ufanarda/selenium ."
+                sh "docker push ufanarda/selenium"
             }
         }
 
