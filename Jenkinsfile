@@ -12,7 +12,7 @@ pipeline{
 
         stage('Build Image'){
             steps{
-                sh "docker build -t=ufanarda/selenium:latest ."
+                sh "docker build -t=ufanarda/selenium ."
             }
         }
 
@@ -21,8 +21,8 @@ pipeline{
                 DOCKER_HUB = credentials('dockerhub-creds')
             }
             steps{
-                sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
-                sh "docker push ufanarda/selenium:latest"
+                sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
+                sh "docker push ufanarda/selenium"
             }
         }
 
