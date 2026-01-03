@@ -23,7 +23,7 @@ pipeline{
             steps{
                 sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
                 sh 'docker push ufanarda/selenium:latest'
-                sh "docker tag ufanarda/selenium:lates ufanarda/selenium:${env.BUILD_NUMBER}"
+                sh "docker tag ufanarda/selenium:latest ufanarda/selenium:${env.BUILD_NUMBER}"
                 sh "docker push ufanarda/selenium:${env.BUILD_NUMBER}"
             }
         }
