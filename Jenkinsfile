@@ -17,12 +17,20 @@ pipeline{
         }
 
         stage('Push Image'){
+            environment{
+                DOCKER_HUB = credentials('dockerhub-creds')
+            }
             steps{
-                echo "docker push ufanarda/selenium ."
+                sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                sh "docker push ufanarda/selenium ."
             }
         }
 
     }
-
+    post {
+        always {
+            sh "docker logout"
+        }
+    }
 
 }
